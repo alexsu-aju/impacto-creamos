@@ -1,0 +1,720 @@
+/* ═══════════════════════════════════════════════
+   Creamos Guatemala · Gestión de Impacto
+   styles.css
+═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Inter:wght@300;400;500&display=swap');
+
+/* ─── Variables ─────────────────────────────── */
+:root {
+  --navy:        #18273A;
+  --navy-mid:    #243347;
+  --navy-light:  #2E4060;
+  --gold:        #C4A87A;
+  --gold-dim:    rgba(196, 168, 122, 0.35);
+  --white:       #F0EBE3;
+  --white-dim:   rgba(240, 235, 227, 0.72);
+  --grey:        #7A8FA6;
+  --grey-dim:    rgba(122, 143, 166, 0.5);
+  --card-bg:     rgba(16, 28, 42, 0.86);
+  --ease:        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Reset ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════════
+   SLIDES — Base
+═══════════════════════════════════════════════ */
+.slide {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;   /* clip floor/ceiling without breaking 3D context inside */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.65s var(--ease);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Fondo fotográfico */
+.slide__bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(7px) brightness(0.38);
+  transform: scale(1.06);
+  transition: transform 10s ease;
+}
+.slide.active .slide__bg { transform: scale(1.0); }
+
+/* Fondo sólido navy */
+.slide__bg--solid {
+  position: absolute; inset: 0;
+  background: var(--navy);
+}
+
+/* Overlays */
+.slide__overlay { position: absolute; inset: 0; }
+.slide__overlay--heavy  { background: rgba(12, 20, 32, 0.55); }
+.slide__overlay--walk   { background: rgba(12, 20, 32, 0.48); }
+
+/* ─── Body containers ────────────────────────── */
+.slide__body {
+  position: relative;
+  z-index: 10;
+  width: 100%; height: 100%;
+  padding: 56px 80px;
+}
+
+.slide__body--center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+}
+
+/* ═══════════════════════════════════════════════
+   SLIDE 1 · Carátula
+═══════════════════════════════════════════════ */
+.cover__logo {
+  width: clamp(120px, 14vw, 190px);
+  filter: brightness(0) invert(1);
+  margin-bottom: 8px;
+}
+
+.cover__rule {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  border: none;
+  margin: 4px auto 20px;
+}
+
+.cover__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.75rem, 1.2vw, 1rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════════════════════
+   Tipografía global
+═══════════════════════════════════════════════ */
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.65rem, 0.9vw, 0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1.12;
+  color: var(--white);
+}
+
+.h1--left { text-align: left; }
+
+.h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+.instruction {
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-weight: 300;
+  color: var(--grey);
+  letter-spacing: 0.04em;
+}
+
+.body-text {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--white-dim);
+}
+
+.rule--left {
+  width: 40px; height: 1px;
+  background: var(--gold);
+  border: none;
+  margin: 8px 0 20px;
+}
+
+/* ═══════════════════════════════════════════════
+   SLIDE 2 · Iframe
+═══════════════════════════════════════════════ */
+.slide--iframe { cursor: default; }
+
+.iframe-shell {
+  width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--gold-dim);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.iframe-shell iframe {
+  width: 100%; height: 100%;
+  border: none; display: block;
+}
+
+/* ═══════════════════════════════════════════════
+   SLIDE 3 · Historia
+═══════════════════════════════════════════════ */
+.slide__body--story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(40px, 6vw, 90px);
+}
+
+.story__figure { display: flex; align-items: center; }
+
+.story__img {
+  width: 100%;
+  max-height: 72vh;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+  filter: grayscale(10%) brightness(0.96);
+}
+
+.story__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ═══════════════════════════════════════════════
+   SLIDES 4–9 · Walk sequence · Corredor 3D Real
+   Arquitectura:
+     .slide--walk
+       .slide__bg (foto de fondo)
+       .slide__overlay
+       .walk-world  ← establece perspective
+         .walk-scene  ← este elemento se mueve en Z
+           .walk-ceil  ← techo con cuadrícula 3D
+           .walk-card  ← la tarjeta del programa
+           .walk-floor ← piso con cuadrícula 3D
+   Los gradientes laterales (::before/::after en walk-world)
+   simulan las paredes del pasillo.
+═══════════════════════════════════════════════ */
+
+.slide--walk { cursor: pointer; transition: none; }
+.slide--walk.active { opacity: 1; }
+
+/* ── El contenedor que establece la perspectiva 3D ──
+   NO overflow:hidden aquí — eso anularía preserve-3d en .walk-scene.
+   El clipping lo hace .slide (su padre). ── */
+.walk-world {
+  position: absolute;
+  inset: 0;
+  perspective: 1800px;         /* focal length amplio para profundidad realista */
+  perspective-origin: 50% 46%;
+  /* sin overflow:hidden — permite que preserve-3d funcione correctamente */
+}
+
+/* ── Gradientes laterales: paredes del pasillo (fijos, no animados) ── */
+.walk-world::before,
+.walk-world::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 30%;
+  pointer-events: none;
+  z-index: 30;
+}
+.walk-world::before {
+  left: 0;
+  background: linear-gradient(to right,
+    rgba(8,15,26,0.95) 0%,
+    rgba(8,15,26,0.55) 45%,
+    transparent 100%);
+}
+.walk-world::after {
+  right: 0;
+  background: linear-gradient(to left,
+    rgba(8,15,26,0.95) 0%,
+    rgba(8,15,26,0.55) 45%,
+    transparent 100%);
+}
+
+/* ── La escena: todo dentro se mueve en Z (la cámara camina) ── */
+.walk-scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+/* ── Piso con cuadrícula en perspectiva real ── */
+.walk-floor {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) rotateX(77deg);
+  transform-origin: center top;
+  width: 380vw;
+  height: 280vh;
+  background:
+    repeating-linear-gradient(
+      rgba(196,168,122,0.10) 0, rgba(196,168,122,0.10) 1px,
+      transparent 1px, transparent 85px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(196,168,122,0.10) 0, rgba(196,168,122,0.10) 1px,
+      transparent 1px, transparent 85px
+    );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Techo (espejo del piso, más sutil) ── */
+.walk-ceil {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) rotateX(-77deg);
+  transform-origin: center bottom;
+  width: 380vw;
+  height: 180vh;
+  background:
+    repeating-linear-gradient(
+      rgba(196,168,122,0.04) 0, rgba(196,168,122,0.04) 1px,
+      transparent 1px, transparent 85px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(196,168,122,0.04) 0, rgba(196,168,122,0.04) 1px,
+      transparent 1px, transparent 85px
+    );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ══════════════════════════════════════════════
+   WALK: Tarjetas — animación 100% vía JS (rAF)
+   CSS sólo define estilos estáticos.
+   El movimiento real (física 1/d) lo hace script.js.
+══════════════════════════════════════════════ */
+
+/* ── Tarjetas: todas superpuestas, ocultas por defecto ── */
+.walk-card {
+  position: absolute;
+  z-index: 10;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(196, 168, 122, 0.22);
+  border-left: 3px solid var(--gold);
+  padding: clamp(32px, 4vw, 52px) clamp(32px, 4.5vw, 60px);
+  max-width: clamp(520px, 52vw, 700px);
+  width: 90%;
+  opacity: 0;
+  pointer-events: none;
+  /* Sin transition: el rAF actualiza transform/opacity directamente */
+}
+
+/* Tarjeta activa: detenida frente a ti, completamente quieta */
+.walk-card.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: none;   /* nada se mueve cuando estás parado */
+}
+
+/* ── Efecto ambiental B: balanceo sutil mientras estás parado ── */
+@keyframes cardBob {
+  0%,100% { transform: translateY(0); }
+  25%      { transform: translateY(-6px) rotate(-0.1deg); }
+  75%      { transform: translateY(-4px) rotate(0.1deg); }
+}
+@keyframes bgSway {
+  0%,100% { transform: scale(1.0); filter: blur(7px) brightness(0.38); }
+  30%      { transform: scale(1.02) translateX(5px);  filter: blur(7px) brightness(0.38); }
+  70%      { transform: scale(1.02) translateX(-5px); filter: blur(7px) brightness(0.38); }
+}
+body.effect-b .walk-card.active {
+  animation: cardBob 2.8s ease-in-out infinite;
+}
+body.effect-b .slide--walk.active .slide__bg {
+  animation: bgSway 2.8s ease-in-out infinite;
+}
+
+.walk-card__tag {
+  display: block;
+  font-size: clamp(0.62rem, 0.85vw, 0.75rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+.walk-card__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.9rem, 3.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.walk-card__body {
+  font-size: clamp(0.9rem, 1.35vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.82;
+  color: var(--white-dim);
+}
+
+.walk-index {
+  position: absolute;
+  bottom: 36px; right: 56px;
+  z-index: 10;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--grey-dim);
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════
+   SLIDE 10 · Mapa
+═══════════════════════════════════════════════ */
+#slide-map .slide__body {
+  padding: 36px 24px 24px;
+  gap: 10px;
+}
+
+.map-wrap {
+  width: 100%;
+  max-width: none;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+#building-svg { width: 100%; height: auto; display: block; }
+
+/* SVG elements */
+.svg-garden {
+  fill: rgba(40, 62, 38, 0.28);
+  stroke: rgba(60, 90, 50, 0.35);
+  stroke-width: 1;
+}
+
+.svg-garden-label {
+  fill: rgba(90, 130, 80, 0.55);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.svg-wing {
+  fill: rgba(24, 39, 58, 0.5);
+  stroke: rgba(196, 168, 122, 0.15);
+  stroke-width: 1;
+}
+
+.svg-connector-bar {
+  fill: rgba(20, 33, 50, 0.6);
+  stroke: rgba(196, 168, 122, 0.12);
+  stroke-width: 1;
+}
+
+.svg-room {
+  fill: rgba(18, 30, 46, 0.92);
+  stroke: rgba(196, 168, 122, 0.28);
+  stroke-width: 1;
+  transition: fill 0.4s ease, stroke 0.4s ease;
+}
+
+.svg-room--recepcion { stroke: rgba(196, 168, 122, 0.55); }
+.svg-room--exit      { stroke: rgba(196, 168, 122, 0.35); fill: rgba(18, 30, 46, 0.75); }
+
+.svg-room-name {
+  fill: var(--white);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.svg-room-sub {
+  fill: var(--grey);
+  font-family: 'Inter', sans-serif;
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.svg-entry-line {
+  stroke: var(--gold-dim);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+
+.svg-entry-arrow { fill: var(--gold-dim); }
+
+/* Huellas */
+.footprint {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.footprint.show { opacity: 1; }
+
+/* IMPACTO reveal — aparece cuando las huellas completan el recorrido */
+.map-impacto {
+  opacity: 0;
+  transition: opacity 1.4s ease;
+  pointer-events: none;
+}
+.map-impacto.show {
+  opacity: 1;
+}
+
+.svg-impacto-text {
+  fill: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.map-note {
+  font-size: clamp(0.7rem, 0.95vw, 0.85rem);
+  font-weight: 300;
+  color: var(--grey);
+  letter-spacing: 0.04em;
+  font-style: italic;
+  margin-top: 6px;
+}
+
+/* ═══════════════════════════════════════════════
+   SLIDE 11 · Fórmula
+═══════════════════════════════════════════════ */
+.formula {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px 10px;
+  max-width: 900px;
+  margin-top: 32px;
+}
+
+.formula__term {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  font-weight: 500;
+  color: var(--white);
+  padding: 16px 26px;
+  border: 1px solid var(--gold-dim);
+  background: rgba(196, 168, 122, 0.06);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease var(--d, 0ms),
+              transform 0.55s ease var(--d, 0ms);
+}
+.formula__term.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.formula__op {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  color: var(--gold);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.formula__eq {
+  width: 100%;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  color: var(--gold);
+  margin-top: 4px;
+}
+
+.formula__result {
+  width: 100%;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease var(--d, 0ms),
+              transform 0.6s ease var(--d, 0ms);
+}
+.formula__result.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════
+   NAVEGACIÓN
+═══════════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav__dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(240, 235, 227, 0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, transform 0.3s;
+}
+.nav__dot:hover   { background: rgba(196, 168, 122, 0.5); }
+.nav__dot.active  { background: var(--gold); transform: scale(1.4); }
+
+.nav__arrow {
+  background: transparent;
+  border: 1px solid rgba(240, 235, 227, 0.15);
+  color: rgba(240, 235, 227, 0.35);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+  line-height: 1;
+}
+.nav__arrow:hover {
+  background: rgba(196, 168, 122, 0.12);
+  color: var(--gold);
+  border-color: var(--gold-dim);
+}
+
+/* Hint "clic para continuar" en walk slides */
+.walk-hint {
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  z-index: 100;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(240, 235, 227, 0.25);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.slide--walk.active ~ .walk-hint,
+body.on-walk .walk-hint { opacity: 1; }
+
+/* ═══════════════════════════════════════════════
+   TOGGLE DE EFECTO · Walk slides
+═══════════════════════════════════════════════ */
+.effect-toggle {
+  position: fixed;
+  bottom: 72px;
+  left: 36px;
+  z-index: 200;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+body.on-walk .effect-toggle {
+  opacity: 1;
+  pointer-events: all;
+}
+.effect-toggle__btn {
+  background: transparent;
+  border: 1px solid rgba(196, 168, 122, 0.2);
+  color: rgba(240, 235, 227, 0.28);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+.effect-toggle__btn:hover {
+  color: rgba(240, 235, 227, 0.65);
+  border-color: rgba(196, 168, 122, 0.4);
+}
+.effect-toggle__btn.active {
+  background: rgba(196, 168, 122, 0.12);
+  border-color: rgba(196, 168, 122, 0.5);
+  color: var(--gold);
+}
+.effect-toggle__label {
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(240, 235, 227, 0.18);
+  margin-right: 2px;
+}
+
+/* Efecto A = sin balanceo (estático, ya es el default) */
+/* Efecto B = balanceo ya definido arriba en la sección walk */

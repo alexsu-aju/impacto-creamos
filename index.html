@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Impacto · Creamos Guatemala</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navegación -->
+  <nav class="nav" id="nav">
+    <button class="nav__arrow nav__arrow--prev" id="prevBtn" aria-label="Anterior">&#8592;</button>
+    <div class="nav__dots" id="navDots"></div>
+    <button class="nav__arrow nav__arrow--next" id="nextBtn" aria-label="Siguiente">&#8594;</button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       SLIDE 1 · Carátula
+  ═══════════════════════════════════════ -->
+  <section class="slide active" data-index="0">
+    <div class="slide__bg" style="background-image:url('img/mieelo.jpeg')"></div>
+    <div class="slide__overlay slide__overlay--heavy"></div>
+    <div class="slide__body slide__body--center">
+      <img class="cover__logo" src="img/logo.webp" alt="Creamos Guatemala">
+      <div class="cover__rule"></div>
+      <p class="cover__subtitle">Gestión de Impacto</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SLIDE 2 · Actividad — Nube de palabras
+  ═══════════════════════════════════════ -->
+  <section class="slide slide--iframe" data-index="1">
+    <div class="slide__bg--solid"></div>
+    <div class="slide__body slide__body--center">
+      <span class="eyebrow">Actividad · 20 minutos</span>
+      <h1 class="h1">¿Qué es impacto para ti?</h1>
+      <p class="instruction">Comparte una o dos palabras usando el enlace</p>
+      <div class="iframe-shell">
+        <iframe
+          src="https://docs.google.com/presentation/d/e/2PACX-1vRPu6_ElluOhGPPlM5ROOy3oE8-XjeB-Q12h-iJ1UtOh8t4koPtLHur_f5RByYzN3zc3hppOJj9Vww6/pubembed?start=true&loop=true&delayms=1000"
+          frameborder="0"
+          allowfullscreen
+          mozallowfullscreen
+          webkitallowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SLIDE 3 · Historia — Valentina
+  ═══════════════════════════════════════ -->
+  <section class="slide" data-index="2">
+    <div class="slide__bg--solid"></div>
+    <div class="slide__body slide__body--story">
+      <figure class="story__figure">
+        <img src="img/historia.png" alt="Historia de transformación" class="story__img">
+      </figure>
+      <div class="story__copy">
+        <span class="eyebrow">Una historia real</span>
+        <h1 class="h1 h1--left">Linda</h1>
+        <div class="rule--left"></div>
+        <!-- ╔══════════════════════════════════╗
+             ║  EDITAR: texto de la historia    ║
+             ╚══════════════════════════════════╝ -->
+        <p class="body-text">
+          Llegó a Creamos buscando comenzar su proceso educativo y mejorar su condición de vida por medio de un trabajo mas digno.<br><br>
+          Encontró mucho más que eso.
+        </p>
+        <!-- ╔══════════════════════════════════╗
+             ║  FIN: texto de la historia       ║
+             ╚══════════════════════════════════╝ -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SLIDES 4–9 · Recorrido por los programas
+  ═══════════════════════════════════════ -->
+
+  <!-- ═══════════════════════════════════════
+       SLIDE 4 · Recorrido — UN solo slide
+       Las 6 tarjetas coexisten aquí.
+       JS controla cuál está activa.
+  ═══════════════════════════════════════ -->
+  <section class="slide slide--walk" data-index="3" id="slide-walk">
+    <!-- El fondo cambia por JS cuando cambias de tarjeta -->
+    <div class="slide__bg" id="walk-bg" style="background-image:url('img/recepcion.jpeg')"></div>
+    <div class="slide__overlay slide__overlay--walk"></div>
+
+    <div class="walk-world">
+      <div class="walk-scene">
+
+        <!-- Techo con cuadrícula -->
+        <div class="walk-ceil"></div>
+
+        <!-- ── Tarjeta 1: Recepción ── -->
+        <article class="walk-card active"
+                 data-card="0"
+                 data-bg="img/recepcion.jpeg">
+          <span class="walk-card__tag">Inicio del recorrido</span>
+          <h2 class="walk-card__title">Recepción</h2>
+          <p class="walk-card__body">Aquí comienza todo. El primer punto de contacto donde cada historia toma forma y donde una persona decide dar el primer paso hacia su propia transformación.</p>
+        </article>
+
+        <!-- ── Tarjeta 2: CCI ── -->
+        <article class="walk-card"
+                 data-card="1"
+                 data-bg="img/cci.jpeg">
+          <span class="walk-card__tag">Centro de Cuidado Infantil · CCI</span>
+          <h2 class="walk-card__title">Un lugar seguro para los más pequeños.</h2>
+          <p class="walk-card__body">Participantes con responsabilidades de cuidado de menores logran participar con tranquilidad al acceder a un recurso indispensable que protege de dejar a los menores en condiciones inseguras.</p>
+        </article>
+
+        <!-- ── Tarjeta 3: Mi Eelo ── -->
+        <article class="walk-card"
+                 data-card="2"
+                 data-bg="img/mieelo.jpeg">
+          <span class="walk-card__tag">Mi Eelo · Empresa Social</span>
+          <h2 class="walk-card__title">Recuperar el control de la propia vida.</h2>
+          <p class="walk-card__body">Participantes con responsabilidades de cuidados y ciclos de violencia logran independencia económica acercándose a una dinámica laboral segura, recuperando su autoestima y estabilidad emocional en el camino.</p>
+        </article>
+
+        <!-- ── Tarjeta 4: IL ── -->
+        <article class="walk-card"
+                 data-card="3"
+                 data-bg="img/il.jpeg">
+          <span class="walk-card__tag">Inclusión Laboral · IL</span>
+          <h2 class="walk-card__title">Descubrir lo que siempre estuvo ahí.</h2>
+          <p class="walk-card__body">Participantes que encuentran en sí mismos capacidades que no conocían, superan sus miedos y las brechas laborales para lograr autonomía e independencia económica, emocional y personal.</p>
+        </article>
+
+        <!-- ── Tarjeta 5: CEEX ── -->
+        <article class="walk-card"
+                 data-card="4"
+                 data-bg="img/educacion.jpeg">
+          <span class="walk-card__tag">Educación Extraescolar · CEEX</span>
+          <h2 class="walk-card__title">Conocimiento que abre puertas.</h2>
+          <p class="walk-card__body">Participantes con más herramientas obtienen conocimiento y certificaciones que les permiten cerrar con mayor facilidad la brecha hacia el empleo formal y la educación superior.</p>
+        </article>
+
+        <!-- ── Tarjeta 6: AE ── -->
+        <article class="walk-card"
+                 data-card="5"
+                 data-bg="img/apoyo.jpeg">
+          <span class="walk-card__tag">Apoyo Emocional · AE</span>
+          <h2 class="walk-card__title">La raíz de un cambio sostenible.</h2>
+          <p class="walk-card__body">Participantes con autonomía en su salud mental logran nuevas herramientas de gestión emocional, cambian su percepción de sí mismos y ganan la seguridad y confianza para sostener ese cambio.</p>
+        </article>
+
+        <!-- Piso con cuadrícula -->
+        <div class="walk-floor"></div>
+      </div>
+    </div>
+
+    <span class="walk-index" id="walk-index">1 / 6</span>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SLIDE 5 · Mapa del recorrido
+  ═══════════════════════════════════════ -->
+  <section class="slide" data-index="4" id="slide-map">
+    <div class="slide__bg--solid"></div>
+    <div class="slide__body slide__body--center">
+      <span class="eyebrow">El recorrido completo</span>
+      <h2 class="h2">Así se construye una vida transformada</h2>
+
+      <div class="map-wrap">
+        <!--
+          Layout según plano real:
+          ─ Corredor SUPERIOR (izquierda→derecha): IL (izq) · Mi Eelo (der)
+          ─ Conector DERECHO (vertical): CCI (arriba) · Recepción / Entrada (abajo)
+          ─ Conector IZQUIERDO (vertical): une top con bottom
+          ─ Corredor INFERIOR (izquierda→derecha): CEEX (izq) · AE (der)
+          ─ Jardín/patio: espacio central abierto (sin texto)
+
+          Ruta de huellas:
+            Recepción (der-abajo) → subir por conector derecho → girar izquierda
+            → cruzar corredor superior de der a izq (Mi Eelo, IL)
+            → girar bajar por conector izquierdo
+            → cruzar corredor inferior de izq a der (CEEX, AE)
+
+          Rotaciones:
+            Subiendo  ↑  rot=0
+            Yendo izq ←  rot=270
+            Bajando   ↓  rot=180
+            Yendo der →  rot=90
+        -->
+        <svg id="building-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="Mapa esquemático del recorrido en Creamos Guatemala">
+
+          <!-- ── Estructura ── -->
+          <!-- Corredor superior -->
+          <rect class="svg-wing" x="30" y="20" width="820" height="120" rx="4"/>
+          <!-- Corredor inferior -->
+          <rect class="svg-wing" x="30" y="380" width="820" height="100" rx="4"/>
+          <!-- Conector izquierdo -->
+          <rect class="svg-connector-bar" x="30" y="20" width="80" height="460" rx="4"/>
+          <!-- Conector derecho (entrada) -->
+          <rect class="svg-connector-bar" x="850" y="20" width="130" height="380" rx="4"/>
+          <!-- Jardín central (sin texto) -->
+          <rect class="svg-garden" x="110" y="140" width="740" height="240" rx="4"/>
+
+          <!-- ── Cuartos ── -->
+          <!-- IL (corredor superior, izquierda) -->
+          <rect class="svg-room svg-room--il"   x="40"  y="20"  width="260" height="120" rx="3"/>
+          <text class="svg-room-name" x="170" y="72">IL</text>
+          <text class="svg-room-sub"  x="170" y="95">Inclusión Laboral</text>
+
+          <!-- Mi Eelo (corredor superior, derecha) -->
+          <rect class="svg-room svg-room--me"   x="530" y="20"  width="310" height="120" rx="3"/>
+          <text class="svg-room-name" x="685" y="72">Mi Eelo</text>
+          <text class="svg-room-sub"  x="685" y="95">Empresa Social</text>
+
+          <!-- CCI (conector derecho, arriba) -->
+          <rect class="svg-room svg-room--cci"  x="850" y="20"  width="130" height="190" rx="3"/>
+          <text class="svg-room-name" x="915" y="105">CCI</text>
+          <text class="svg-room-sub"  x="915" y="125">Centro de<tspan x="915" dy="13">Cuidado Infantil</tspan></text>
+
+          <!-- Recepción / Entrada (conector derecho, abajo) -->
+          <rect class="svg-room svg-room--recepcion" x="850" y="220" width="130" height="180" rx="3"/>
+          <text class="svg-room-name" x="915" y="300">Recepción</text>
+          <text class="svg-room-sub"  x="915" y="322">Entrada</text>
+          <!-- Flecha de entrada desde exterior -->
+          <line class="svg-entry-line" x1="1000" y1="310" x2="982" y2="310"/>
+          <polygon class="svg-entry-arrow" points="982,310 993,305 993,315"/>
+
+          <!-- CEEX (corredor inferior, izquierda) -->
+          <rect class="svg-room svg-room--ceex" x="40"  y="380" width="310" height="100" rx="3"/>
+          <text class="svg-room-name" x="195" y="428">CEEX</text>
+          <text class="svg-room-sub"  x="195" y="450">Educación Extraescolar</text>
+
+          <!-- AE (corredor inferior, centro-derecha) -->
+          <rect class="svg-room svg-room--ae"   x="390" y="380" width="260" height="100" rx="3"/>
+          <text class="svg-room-name" x="520" y="428">AE</text>
+          <text class="svg-room-sub"  x="520" y="450">Apoyo Emocional</text>
+
+          <!-- ══════════════════════════════════════════
+               HUELLAS — img/huella-d.svg  img/huella-i.svg
+               Ruta: Recepción → ↑ derecho → ← top → ↓ izq → → bottom
+               41 huellas totales
+          ══════════════════════════════════════════ -->
+
+          <!-- SUBIENDO ↑  conector derecho  rot=0
+               cx=915  D=x+13=928  I=x-13=902
+               Desde y=365 hasta y=85, paso 35px  -->
+          <g class="footprint" id="fp-1">  <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(928,365) rotate(0)"/></g>
+          <g class="footprint" id="fp-2">  <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(902,330) rotate(0)"/></g>
+          <g class="footprint" id="fp-3">  <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(928,295) rotate(0)"/></g>
+          <g class="footprint" id="fp-4">  <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(902,260) rotate(0)"/></g>
+          <g class="footprint" id="fp-5">  <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(928,225) rotate(0)"/></g>
+          <g class="footprint" id="fp-6">  <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(902,190) rotate(0)"/></g>
+          <g class="footprint" id="fp-7">  <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(928,155) rotate(0)"/></g>
+          <g class="footprint" id="fp-8">  <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(902,120) rotate(0)"/></g>
+          <g class="footprint" id="fp-9">  <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(928,85)  rotate(0)"/></g>
+          <!-- Giro: ↑ → ← rot=315 -->
+          <g class="footprint" id="fp-10"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(878,42)  rotate(315)"/></g>
+
+          <!-- YENDO IZQUIERDA ← corredor superior  rot=270
+               cy=80  D=y+13=93  I=y-13=67
+               Desde x=825 hasta x=105, paso 60px  -->
+          <g class="footprint" id="fp-11"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(825,93) rotate(270)"/></g>
+          <g class="footprint" id="fp-12"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(765,67) rotate(270)"/></g>
+          <g class="footprint" id="fp-13"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(705,93) rotate(270)"/></g>
+          <g class="footprint" id="fp-14"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(645,67) rotate(270)"/></g>
+          <g class="footprint" id="fp-15"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(585,93) rotate(270)"/></g>
+          <g class="footprint" id="fp-16"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(525,67) rotate(270)"/></g>
+          <g class="footprint" id="fp-17"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(465,93) rotate(270)"/></g>
+          <g class="footprint" id="fp-18"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(405,67) rotate(270)"/></g>
+          <g class="footprint" id="fp-19"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(345,93) rotate(270)"/></g>
+          <g class="footprint" id="fp-20"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(285,67) rotate(270)"/></g>
+          <g class="footprint" id="fp-21"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(225,93) rotate(270)"/></g>
+          <g class="footprint" id="fp-22"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(165,67) rotate(270)"/></g>
+          <g class="footprint" id="fp-23"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(105,93) rotate(270)"/></g>
+          <!-- Giro: ← → ↓ rot=225 -->
+          <g class="footprint" id="fp-24"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(52,112) rotate(225)"/></g>
+
+          <!-- BAJANDO ↓  conector izquierdo  rot=180
+               cx=65  D=x-13=52  I=x+13=78
+               Desde y=155 hasta y=355, paso 35px  -->
+          <g class="footprint" id="fp-25"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(52,155)  rotate(180)"/></g>
+          <g class="footprint" id="fp-26"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(78,190)  rotate(180)"/></g>
+          <g class="footprint" id="fp-27"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(52,225)  rotate(180)"/></g>
+          <g class="footprint" id="fp-28"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(78,260)  rotate(180)"/></g>
+          <g class="footprint" id="fp-29"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(52,295)  rotate(180)"/></g>
+          <g class="footprint" id="fp-30"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(78,330)  rotate(180)"/></g>
+          <g class="footprint" id="fp-31"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(52,365)  rotate(180)"/></g>
+          <!-- Giro: ↓ → → rot=135 -->
+          <g class="footprint" id="fp-32"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(68,398) rotate(135)"/></g>
+
+          <!-- YENDO DERECHA → corredor inferior  rot=90
+               cy=430  D=y-13=417  I=y+13=443
+               Desde x=110 hasta x=700, paso 65px  -->
+          <g class="footprint" id="fp-33"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(110,417) rotate(90)"/></g>
+          <g class="footprint" id="fp-34"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(175,443) rotate(90)"/></g>
+          <g class="footprint" id="fp-35"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(240,417) rotate(90)"/></g>
+          <g class="footprint" id="fp-36"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(305,443) rotate(90)"/></g>
+          <g class="footprint" id="fp-37"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(370,417) rotate(90)"/></g>
+          <g class="footprint" id="fp-38"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(435,443) rotate(90)"/></g>
+          <g class="footprint" id="fp-39"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(500,417) rotate(90)"/></g>
+          <g class="footprint" id="fp-40"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(565,443) rotate(90)"/></g>
+          <g class="footprint" id="fp-41"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(630,417) rotate(90)"/></g>
+
+          <!-- CONTINUANDO DERECHA → hasta el conector derecho -->
+          <g class="footprint" id="fp-42"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(695,443) rotate(90)"/></g>
+          <g class="footprint" id="fp-43"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(760,417) rotate(90)"/></g>
+          <g class="footprint" id="fp-44"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(825,443) rotate(90)"/></g>
+          <!-- Giro: → ↑  rot=45 -->
+          <g class="footprint" id="fp-45"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(858,408) rotate(45)"/></g>
+
+          <!-- SUBIENDO ↑ conector derecho hacia Recepción  rot=0
+               cx=915  D=x+13=928  I=x-13=902 -->
+          <g class="footprint" id="fp-46"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(902,380) rotate(0)"/></g>
+          <g class="footprint" id="fp-47"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(928,345) rotate(0)"/></g>
+          <g class="footprint" id="fp-48"> <image href="img/huella-i.svg" x="-7" y="-11" width="15" height="22" transform="translate(902,310) rotate(0)"/></g>
+          <g class="footprint" id="fp-49"> <image href="img/huella-d.svg" x="-7" y="-11" width="15" height="22" transform="translate(928,275) rotate(0)"/></g>
+
+          <!-- ══════════════════════════════════════════
+               IMPACTO — aparece cuando las huellas llegan a Recepción
+               Revelado por JS: id="impacto-reveal"
+          ══════════════════════════════════════════ -->
+          <defs>
+            <filter id="gold-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <g id="impacto-reveal" class="map-impacto">
+            <!-- Resplandor dorado sobre la habitación de Recepción -->
+            <rect x="846" y="217" width="136" height="186" rx="5"
+                  fill="rgba(196,168,122,0.10)"
+                  stroke="rgba(196,168,122,0.85)" stroke-width="2.5"
+                  filter="url(#gold-glow)"/>
+            <!-- Texto IMPACTO -->
+            <text class="svg-impacto-text" x="914" y="256">IMPACTO</text>
+          </g>
+
+        </svg>
+      </div>
+
+      <p class="map-note">El recorrido de cada persona es único. No siempre se siguen todos los programas ni en el mismo orden.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SLIDE 11 · Fórmula de Transformación
+  ═══════════════════════════════════════ -->
+  <section class="slide" data-index="5" id="slide-formula">
+    <div class="slide__bg--solid"></div>
+    <div class="slide__body slide__body--center">
+      <span class="eyebrow">Fórmula de Transformación Sostenible</span>
+      <div class="formula" id="formula">
+        <div class="formula__term" style="--d:0ms">Formación Técnica</div>
+        <span class="formula__op">+</span>
+        <div class="formula__term" style="--d:220ms">Apoyo Emocional</div>
+        <span class="formula__op">+</span>
+        <div class="formula__term" style="--d:440ms">Conexión Laboral</div>
+        <span class="formula__op">+</span>
+        <div class="formula__term" style="--d:660ms">Soporte Práctico</div>
+        <span class="formula__eq">=</span>
+        <div class="formula__result" style="--d:960ms">Transformación Sostenible</div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
