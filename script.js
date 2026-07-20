@@ -140,7 +140,7 @@
      Exactamente lo que describes: "imagina caminar 8 metros". */
   function walkToward(card, onDone) {
     stopRaf();
-    const DUR = 4500;   // ms — tiempo de caminata (8 metros a ritmo normal)
+    const DUR = 2500;   // ms — tiempo de caminata (8 metros a ritmo normal)
     const t0  = performance.now();
 
     /* Tarjeta empieza invisible en la distancia */
